@@ -10,6 +10,7 @@ c.execute("DROP TABLE IF EXISTS abilities_new")
 c.execute('''CREATE TABLE abilities_new
              (ability TEXT, num TEXT)''')
 
+# Loop through and split by commas each of the ability and add to new table
 c.execute("SELECT abilities, pokedex_number FROM imported_pokemon_data")
 rows = c.fetchall()
 for row in rows:
