@@ -2,28 +2,28 @@
 CREATE TABLE Abilities (
   pokedex_number INT,
   ability TEXT,
-  FOREIGN KEY (pokedex_number) REFERENCES normalized(pokedex_number)
+  FOREIGN KEY (pokedex_number) REFERENCES first_normalized(pokedex_number)
 );
 
 -- Moving the ability column over while keeping pokedex_number as the primary key
 INSERT INTO Abilities (pokedex_number, ability)
 SELECT pokedex_number, ability
-FROM normalized;
+FROM first_normalized;
 
 -- Creating table for Type in order to remove partial dependency
 CREATE TABLE Type (
   pokedex_number INT,
   type1 TEXT,type2 TEXT,                      
-  FOREIGN KEY (pokedex_number) REFERENCES normalized(pokedex_number)
+  FOREIGN KEY (pokedex_number) REFERENCES first_normalized(pokedex_number)
 );
 
 -- Moving the type1 and type2 column over while keeping pokedex_number as the primary key
 INSERT INTO Type (pokedex_number, type1, type2)
 SELECT pokedex_number ,type1, type2
-FROM normalized;
+FROM first_normalized;
 
-ALTER TABLE normalized  DROP ability;
-ALTER TABLE normalized  DROP type1;
-ALTER TABLE normalized  DROP type2;
+ALTER TABLE first_normalized  DROP ability;
+ALTER TABLE first_normalized  DROP type1;
+ALTER TABLE first_normalized  DROP type2;
 
 
