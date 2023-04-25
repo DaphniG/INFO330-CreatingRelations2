@@ -22,5 +22,8 @@ INSERT INTO Type (pokedex_number, type1, type2)
 SELECT pokedex_number ,type1, type2
 FROM normalized;
 
+ALTER TABLE normalized  DROP ability;
+ALTER TABLE normalized  DROP type1;
+ALTER TABLE normalized  DROP type2;
 
 
