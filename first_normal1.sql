@@ -5,6 +5,10 @@ UPDATE abilities_new SET ability = REPLACE(ability,']','');
 UPDATE abilities_new SET ability = trim(ability);
 -- Joins table with in first normal form so all the abilities get its own cell
 select * from abilities_new join imported_pokemon_data on abilities_new.num = imported_pokemon_data.pokedex_number;
+
+-- Drop the abilities column
+ALTER TABLE imported_pokemon_data DROP abilities ;
+
 -- Creating a copy of this
 create table first_normalized(ability TEXT, num TEXT,"against_bug" TEXT,
   "against_dark" TEXT,
