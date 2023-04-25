@@ -1,3 +1,8 @@
+-- getting rid of the brackets
+UPDATE abilities_new SET ability = REPLACE(ability,'[','');
+UPDATE abilities_new SET ability = REPLACE(ability,']','');
+-- get rid of all white spaces
+UPDATE abilities_new SET ability = trim(ability);
 -- Joins table with in first normal form so all the abilities get its own cell
 select * from abilities_new join imported_pokemon_data on abilities_new.num = imported_pokemon_data.pokedex_number;
 -- Creating a copy of this
