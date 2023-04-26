@@ -27,4 +27,7 @@ ALTER TABLE first_normalized  DROP is_legendary;
 ALTER TABLE first_normalized  DROP name;
 
 
+-- I renamed the table first_normalized to normalized at the very end
+
+
 
